@@ -1,0 +1,250 @@
+.HeaderFon{background: url('/images/design/header_fon.png') repeat-x #2b2525;height: 33px;}
+#Header{width: 990px;margin: 0 auto;overflow: hidden;padding: 9px 0 8px 0;}
+
+.top_icons{width: 59px;height: 10px;float: left;margin-top: 3px;overflow: hidden;}
+.icoHome{background: url('/images/design/home_icon.png') no-repeat center center;display: block;
+ width: 11px;height: 10px;float: left;margin-right: 13px;}
+.icoHome:hover{background-image: url('/images/design/home_icon_hover.png');}
+.icoMail{background: url('/images/design/mail_icon.png') no-repeat center center;display: block;
+ width: 11px;height: 10px;float: left;margin-right: 13px;}
+.icoMail:hover{background-image: url('/images/design/mail_icon_hover.png');}
+.icoMap{background: url('/images/design/map_icon.png') no-repeat center center;display: block;
+ width: 11px;height: 10px;float: left;}
+.icoMap:hover{background-image: url('/images/design/map_icon_hover.png');}
+
+.user_order{width: 430px;height: 16px;float: right;}
+.userForm{overflow: hidden;float: left;}
+.userEnter{padding: 1px 36px 0 20px;background: url('/images/design/enter.png') no-repeat left center;color: white;float: left}
+.userReg{padding: 1px 0px 0 18px;background: url('/images/design/register.png') no-repeat left center;float: left;}
+.userReg a{color: white;}
+
+.OrderBlock{float: right;overflow: hidden;padding-top: 1px;}
+.OrderBlockName{float: right;background: url('/images/design/order.png') no-repeat left center;padding: 0 0 0 25px;
+               color: white;display: block;}
+.OrderBlockCnt{float: right;padding-left: 17px;color: #ed6e1e;display: block;}
+.LogoFindContacts{position: relative;margin: 0 auto;width: 990px;}
+.Logo{position: relative;top: -10px;left: 0;width: 268px;height: 133px;overflow: hidden;}
+.ShortFind{position: absolute;left: 305px;top: 21px;width: 370px;}
+.ShortFind .Short{color: #929292;font-size: 12px;border-left: 1px solid #c8c8c8;
+padding: 0 8px;width: 354px;height: 44px;overflow: hidden;position: relative;}
+#findBox{margin-top: 34px;border-top: 2px solid #999999;}
+#findBox input{background: url('/images/design/find_fon.png') no-repeat 4px 50%;
+border: 1px solid #e7e7e7;margin: 0;padding: 3px 24px;width: 320px;color: #b0b0b0;font-size: 12px;
+height: 15px;}
+#headerPhone{width: 255px;position: absolute;right: 0;top: 21px;height: 90px;overflow: hidden;}
+
+.MenuFon{margin: 5px auto 0 auto;width: 1011px;padding-left: 21px;}
+#Menu{background: url('/images/design/fon_ul_li_border.png') repeat-x top center;}
+.MenuRightFon{padding: 4px 5px 4px 0;background: url('/images/design/fon_ul_li.jpg') no-repeat right top;}
+#Menu ul{list-style: none;overflow: hidden;font-size: 17px;font-weight: bold;
+background: url('/images/design/fon_fo_menu.png') no-repeat left top;padding: 0 0 4px 0;margin: 0;}
+#Menu ul li{list-style: none;float: left;padding: 0;margin: 0;}
+#Menu ul li.prom{background: url('/images/design/menu_li_left.png') no-repeat 50% 50%;width: 17px;height: 46px;}
+#Menu ul li:last-child{background-image: url('/images/design/menu_li_left_empty.png');}
+#Menu ul li a{font-family: charis_b,sans-serif;color: white;display: block;text-decoration: none;
+height: 31px;padding: 7px 0px 8px 0px;background: url('/images/design/menu_li_center.png') repeat-x center top;outline: none;}
+#Menu ul li a:hover{background-image: url('/images/design/menu_li_left_center.png');color: #333333;}
+#Menu ul li a.current{background-image: none;color: white;}
+
+.CatalogMenuActionFon{background: url('/images/design/fon_for_block_catalog_action.png') no-repeat bottom;
+padding-bottom: 13px;}
+.CatalogMenuAction{border-top: 4px solid #ed6e1e;margin-top: 15px;border-bottom: 4px solid #ed6e1e;margin-top: 15px;
+overflow: hidden;}
+#fonForCatalogMenuMainPage{background: url('/images/design/fon_for_catalog_menu_main_page.jpg') no-repeat;
+width: 495px;height: 276px;float: left;overflow: hidden;}
+#fonForCatalogMenuMainPage ul{margin: 3px 65px 0 40px;float: left;}
+#fonForCatalogMenuMainPage ul li{list-style: square;color: #ed6e1e;margin-top: 7px}
+#fonForCatalogMenuMainPage ul li a{color: white;font-size: 13px;}
+.actinMainPage{background: url('/images/design/tmp/actin_main_page.jpg') no-repeat;
+width: 495px;height: 276px;float: right;}
+
+.BlockNew .contenttitle1 h3{font-family: charis_b,sans-serif;font-size: 25px;color: #0d0909;padding: 5px 0;}
+.fonProd{overflow: hidden;}
+.prod{float: left;padding: 4px;border: 1px solid #e0e0e0;margin-right: 30px;width: 215px;}
+.prod:hover{border: 3px solid #0d0909;padding: 2px;}
+.prodInside{padding: 8px;border: 2px solid white;}
+.prod:hover .prodInside{border-color: #ed6e1e;}
+.nameProd{font-family: charis_b,sans-serif;color: #0d0909;font-size: 17px;height: 62px;
+position: relative;overflow: hidden;}
+.imgProd{height: 195px;position: relative;overflow: hidden;}
+.icons_new_fon_fon{position: absolute;overflow: hidden;}
+.icons_new_fon{overflow: hidden;margin-bottom: 5px;}
+.icons_new{color: white;background: url('/images/design/icons_new.png') repeat-x;float: left;padding: 4px;}
+.icons_new_left{background: url('/images/design/icons_new_left.png') no-repeat top left;float: left;width: 10px;height: 22px;}
+.imgProdTable{height: 195px;width: 195px;display: table-cell;vertical-align: middle;text-align: center;}
+
+.paramProdFon{height: 110px;position: relative;overflow: hidden;}
+.paramProd{position: absolute;}
+
+.paramProdText{color: #929292;margin-top: 10px;font-size: 11px;}
+.paramProdText span{font-weight: bold;}
+.paramProdColorName{color: #474747;margin-top: 10px;}
+.paramProdColor ul{list-style: none;overflow: hidden;margin: 0 !important;padding: 0 !important;}
+.paramProdColor ul li{float: left;width: 30px;height: 30px;margin: 0 2px 0 0 !important;padding: 0 !important;}
+.paramProdColor ul li div{width: 26px;height: 26px;border: 2px solid transparent;cursor: pointer;}
+.sel_div{border: 2px solid  #ee6f1f !important;background: url('/images/design/sel_div.png') no-repeat center center;}
+.color_fon{overflow: hidden;margin-top: 3px;}
+.color_left_fon{height: 30px;float: left;margin-right: 2px;width: 16px;}
+.color_left{background-image: url('/images/design/color_left.png') !important;}
+.color_right_fon{float: right;width: 16px;height: 30px;}
+.color_right{background-image: url('/images/design/color_right.png') !important;}
+.color_left, .color_right{cursor: pointer;background: no-repeat center center #ececec;
+width: 16px !important;height: 30px;}
+.color_center{float: left;width: 160px;height: 30px; position: relative;overflow: hidden;}
+.color_center ul{position: absolute;height: 30px;left: 0px;}
+
+.priceBuyProd{overflow: hidden;margin-top: 10px;height: 32px;}
+.net_nalishie_fon{background: url('/images/design/net_nalishie_fon.png') no-repeat center top #2a2424;
+                 height: 16px;padding: 8px 45px;}
+.net_nalishie{background: url('/images/design/net_nalishie.png') no-repeat center left;padding:1px 0 1px 20px;
+color: white;}
+.priceProd{background: url('/images/design/price_fon.jpg') no-repeat center top #2f2929;min-width: 96px;height: 32px;
+float: left;font-family: charis_b,sans-serif;font-size: 17px;color: white;text-align: center;}
+.buyProd{float: right;}
+.buybutton a{min-width: 66px;height: 32px;background: url('/images/design/cart.png') no-repeat 5px #d8d8d8;
+font-family: charis_b,sans-serif;font-size: 17px;color: #333333;text-decoration: none;padding-left: 30px;display: table-cell;vertical-align: middle;}
+.buybutton a:hover{background-image: url('/images/design/cart_hover.png');background-color: #fb8a2d;color: white;}
+
+
+.categoryShort{border: 1px solid #e0e0e0; padding: 10px;margin-top: 30px;}
+.listCat{margin-top: 30px;overflow: hidden;}
+.listCatOneItem{float: left;margin-right: 28px;width: 224px;border: 1px solid #e0e0e0;}
+.listCatOneItemImgFon{overflow: hidden;width: 224px;height: 224px;}
+.listCatOneItemImg{width: 224px;height: 224px;display: table-cell;text-align: center;vertical-align: middle;}
+.listCatOneItemText{padding: 5px 15px 15px 15px;}
+.listCatOneItemName a{color: #0d0909;font-family: charis_b,sans-serif;font-size: 17px;}
+.listCatOneItemCnt{color: #474747;margin-top: 15px;}
+.listCatOneItemCnt span{color: #ed6e1e;padding-bottom: 25px;}
+.listCatOneItemDetail{overflow: hidden;margin-top: 25px;}
+.listCatOneItemDetail a{background: url('/images/design/podrobnee_category.png') repeat-x top center #d6d6d6;
+display: block;float: left;font-family: charis_b,sans-serif;color: #333333;font-size: 17px;padding: 0 8px;}
+.listCatOneItemDetail span{background: url('/images/design/podrobnee_category_strelka.png') no-repeat 100% 60%;
+display: block;padding-right: 10px; }
+
+.BlockPolosa{background: url('/images/design/polosa.png') repeat-x center bottom;height: 25px;}
+
+.MainPageShortNews{margin-top: 15px;overflow: hidden;}
+.MainPageShort{float: left;width: 480px;}
+.MainPageNews{float: right;width: 480px;}
+
+.MainPageHead{overflow: hidden;}
+.MainPageHeadName{float: left;font-family: charis_b,sans-serif;color: #0d0909;font-size: 25px;float: left;}
+.MainPageHeadHref{float: right;height: 14px;padding: 18px 0 15px 0;}
+.MainPageHeadHref a{color: #f87200;}
+
+.MainPageConten{margin-top: 10px;}
+.MainPageContenHref{margin-top: 10px;}
+.MainPageContenHref a{color: #ed6e1e;font-size: 16px;font-family: charis_b,sans-serif;}
+.MainPageContenText p{margin: 8px 0;}
+
+.LastNewsOne{margin-top: 25px;overflow: hidden;}
+.LastNewsOneImg{float: left;width: 72px;height: 72px;padding: 0 10px 10px 0;}
+.LastNewsOneImgTable{width: 72px;height: 72px;vertical-align: middle;text-align: center;display: table-cell;}
+.LastNewsDate{color: #929292;font-size: 10px;}
+.LastNewsName a{color: #ed6e1e;font-family: charis_b,sans-serif;font-size: 16px;}
+
+
+.NameLeftMenu{font-family: charis_b,sans-serif;color: #0d0909;font-size: 22px;height: 41px;padding: 17px 0;}
+.CatalogMenuLeftFon{background: url('/images/design/CatalogMenuLeftFon.jpg') no-repeat center top #201a1a;
+border-bottom: 4px solid #ed6e1e;border-top: 4px solid #ed6e1e;}
+.CatalogMenuLeftFon ul{margin: 20px 0 20px 30px;}
+.CatalogMenuLeftFon ul li{list-style: square;color: #ed6e1e;margin-top: 7px}
+.CatalogMenuLeftFon ul li a{color: white;font-size: 13px;}
+.CatalogMenuLeftFon ul li a.selected{color: #ed6e1e}
+.CatalogMenuLeftFon ul ul{margin: 0px 0 0px 10px !important;}
+
+#sorePanel{overflow: hidden;padding: 12px 0;}
+.sortPrice{float: left;overflow: hidden;}
+.nameSorePanel{float: left;color: #0d0909;font-size: 13px;}
+.contentSorePanel{float: left;background: url('/images/design/sore_panel.png') no-repeat right 60%;
+cursor: pointer;padding-right: 10px;}
+.nameSore{color: #ed6e1e;font-size: 13px;padding: 0 0 1px 4px;background: url('/images/design/sore_bottom_border.png')
+repeat-x bottom center;}
+.nameStatus{color: #ed6e1e;font-size: 13px;background: url('/images/design/sore_bottom_border.png') repeat-x bottom center;}
+.nameSoreFon{float: left}
+.sortStatus{float: right;}
+.categoryContent{overflow: hidden;}
+.categoryContent2prop{overflow: hidden;padding-left: 112px;}
+.categoryContent1prop{overflow: hidden;padding-left: 255px;}
+
+.content2BoxContent .body{margin-top: 30px;padding: 20px;border: 1px solid #e0e0e0;}
+.tovarDescriptHeader{}
+.tovarImage{float: left;width: 274px;padding-right: 20px;}
+#main_image_prop{width: 272px;height: 272px;border: 1px solid #e0e0e0;margin-bottom: 5px;}
+.main_image_prop_fon{width: 272px;height: 272px;display: table-cell;text-align: center;vertical-align: middle;}
+#carouselFon{width: 274px;position: relative;}
+#carouselFon ul{list-style: none;overflow: hidden;padding: 0;margin: 0;height: 64px;}
+#carouselFon ul li{list-style: none;float: left;padding: 0;margin: 0 6px 0 0;width: 62px;
+height: 62px;border: 1px solid #e0e0e0;overflow: hidden;}
+#carouselFon ul li a{display: table-cell;width: 62px;height: 62px;vertical-align: middle;text-align: center;}
+
+#tovarDetail{overflow: hidden;min-height: 290px;}
+#tovarDetail .tovarDetailName{font-family: charis_b,sans-serif;font-size: 26px;color: #0d0909;padding: 0;}
+.tovarDetailBuyRating{overflow: hidden;margin-top: 10px;}
+.tovarDetailBuy{float: left;width: 260px;}
+.tovarDetailPrice{background: url('/images/design/price_tovar_fon.png') no-repeat center top #2F2929;min-width: 126px;
+height: 41px;float: left;font-family: charis_b,sans-serif;font-size: 22px;color: white;text-align: center;}
+.tovarDetailBuyButton a{min-width: 81px;height: 41px;background: url('/images/design/cart_detail.png') no-repeat 15px #D8D8D8;
+font-family: charis_b,sans-serif;font-size: 20px;color: #333;text-decoration: none;padding-left: 45px;display: table-cell;
+vertical-align: middle;}
+.tovarDetailBuyButton a:hover{background-image: url('/images/design/cart_detail_hover.png');background-color: #fb8a2d;color: white;}
+.tovarDetailRatingTmp{background: url('/images/design/tmp/rating_tmp.png');width: 87px;height: 31px;float: right;margin-right: 25px;}
+.tovarDetailProp{margin-top: 30px;}
+.tovarDetaiPropGray{color: #474747;background: #f5f5f5;padding: 8px;}
+.tovarDetaiPropWhite{color: #474747;background: white;padding: 8px;}
+.tovarDetailColor{margin-top: 20px;}
+.tovarDetailColorName{color: #0d0909;padding-bottom: 5px;}
+.tovarDetailColor .color_center{width: 323px;}
+.tovarDetailColor ul{list-style: none;overflow: hidden;margin: 0 !important;padding: 0 !important;position: absolute;left: 0;}
+.tovarDetailColor ul li{float: left;width: 30px;height: 30px;margin: 0 2px 0 0 !important;padding: 0 !important;}
+.tovarDetailColor ul li div{width: 26px;height: 26px;border: 2px solid transparent;cursor: pointer;}
+
+.fullDesc{margin-top: 30px;}
+.fullDescKey{overflow: hidden;border-bottom: 2px solid #ed6f1e;}
+.fullDescKeyOne{float: left;padding-right: 5px;cursor: pointer;}
+.fullDescKeyOneName{background: url('/images/design/full_decscr_key_one_name.png') repeat-x center top;
+font-size: 14px;height: 16px;padding: 8px 20px;float: left;color: #0d0909;}
+.selName{color: white;background-image: url('/images/design/full_decscr_key_one_name_sel.png');}
+.fullDescKeyOneLeft{background: url('/images/design/full_decscr_key_one_left.png')  no-repeat center top;
+width: 5px;height: 32px;float: left;}
+.selLeft{background-image: url('/images/design/full_decscr_key_one_left_sel.png');}
+.fullDescContent{margin-top: 15px;overflow: hidden;}
+.disable{display: none;}
+
+.tovarDetailActionPredlozenie{border: 2px solid #ed6e1e;padding: 10px 20px;margin-top: 25px;}
+.tovarDetailActionHeader{color: #0d0909;font-size: 22px;font-family: charis_b,sans-serif;}
+.tovarDetailActionTmp{background: url('/images/design/tmp/action_tmp.png') no-repeat;width: 651px;height: 340px;}
+
+.tovarDetailPohozie{margin-top: 10px;}
+.tovarDetailPohozieName{color: #0d0909;font-size: 22px;font-family: charis_b,sans-serif;}
+.pohozhieTovariTmp{background: url('/images/design/tmp/pohozhie_tovari_tmp.png');width: 736px;height: 431px;}
+
+#OrederCart table tr:first-child{background: url('/images/design/order_fon_header.jpg') no-repeat center top;
+}
+#OrederCart table tr:first-child th{color: white;font-size: 13px;height: 16px;padding: 12px 0px;}
+#OrederCart table tr td{padding: 25px;vertical-align: middle;}
+.OrderPropName{color: #0d0909;font-size: 14px;font-weight: bold;}
+#OrederCart table tr td .OrderPropQuantity{width: 78px;height: 27px;border: 1px solid #e2e2e2;padding: 0;color: #0d0909;font-size: 13px;
+text-align: center;}
+#OrederCart table tr td .price{color: #ed6e1e;font-size: 18px;}
+#OrederCart table tr td.priceAll{color: white; font-size: 14px;font-weight: bold;text-align: right;
+background: url('/images/design/order_fon_header.jpg') no-repeat center top;padding: 9px;height: 22px;}
+
+.footerFon{background: url('/images/design/footer_fon.jpg') no-repeat center top #1b1515;height: 215px;}
+.footer{width: 990px;margin: 0 auto;height: 215px;}
+.footerHead{font-family: charis_b,sans-serif;color: white;font-size: 25px;padding: 10px 0;}
+.footerCenter{overflow: hidden;padding-bottom: 20px;border-bottom: 3px solid #929292;}
+.footerCenterContacts{float: left;width: 460px;height: 60px;position: relative;overflow: hidden;color: white; }
+.footerCenterMenu{float: right;}
+.footerCenterMenu ul{list-style: none;overflow: hidden;}
+.footerCenterMenu ul li{list-style: none;float: left;color: white;font-size: 11px;padding: 0 2px;}
+.footerCenterMenu ul li a{color: white;font-size: 11px;outline: none;}
+.footerCenterMenu ul li a.current{color: #ed6e1e;}
+.footerFooter{overflow: hidden;padding-top: 20px;}
+.footerFooterCopy{color: #929292;font-size: 12px;float: left;}
+.footerFooterCopy a{color: #929292;font-size: 12px;}
+.footerFooterCopy span{color: #ed6e1e;}
+.footerFooterShotchikFon{float: right;}
+.footerFooterShotchik{overflow: hidden;}
+.footerFooterFonShotchik{float: left;padding-left: 5px;}
+.Shotchik{background: #666666;width: 88px;height: 31px;}
