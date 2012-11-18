@@ -304,7 +304,12 @@ class CatalogLayout extends Catalog  {
                     <div class="listCatOneItemImgFon">
                         <div class="listCatOneItemImg">
                             <a href="<?=$link;?>" title="<?=htmlspecialchars($name);?>">
-                                <?=$this->ShowCurrentImageCat($img_cat,224,224);?>
+                                <?if(!empty($img_cat)){
+                                    $this->ShowCurrentImageCat($img_cat,224,224);
+                                }else{?>
+                                <img src="/images/design/no-image.jpg" alt="<?=$this->multi['TXT_NO_IMAGE']?>" 
+                                         title="<?=$this->multi['TXT_NO_IMAGE']?> "/>
+                                <?}?>
                             </a>
                         </div>    
                     </div>
@@ -1417,7 +1422,7 @@ class CatalogLayout extends Catalog  {
         }?>"><?}?>
                     <div class="prod"<?if(($i+1)%3==0){?> style="margin: 0;"<?}?>>
                       <div class="prodInside">
-                        <div class="nameProd"><?=$name;?></div>
+                        <div class="nameProd"><a href="<?=$link;?>" title="<?=$name?>"><?=$name;?></a></div>
                         <div class="imgProd">
                             <div class="icons_new_fon_fon">
                                 <?if($row['popular']==1)$this->ShowTopIcons('Распродажа');
@@ -1431,7 +1436,10 @@ class CatalogLayout extends Catalog  {
                                 </a><?
                             }
                             else {
-                               ?><a href="<?=$link;?>" title="<?=$this->multi['TXT_NO_IMAGE']?>"><img src="/images/design/no-image.jpg"/></a><?
+                                ?><a href="<?=$link;?>" title="<?=$this->multi['TXT_NO_IMAGE']?>">
+                                    <img src="/images/design/no-image.jpg" alt="<?=$this->multi['TXT_NO_IMAGE']?>" 
+                                         title="<?=$this->multi['TXT_NO_IMAGE']?> "/>
+                                </a><?
                             }?>
                             </div>
                         </div>
@@ -1804,8 +1812,9 @@ class CatalogLayout extends Catalog  {
                          <div class="tovarDetailPrice"><span id="priceProp_<?=$row['id']?>"><?=$price?></span> грн.</div>
                          <div class="buyProd">
                              <form action="#" method="post" name="catalog<?=$row['id']?>" id="catalog<?=$row['id']?>">
-                                 <input type="hidden" value="0" id="colorId<?=$row['id']?>" name="colorId" />
+                                 <div id="parametersBlockHidden<?=$row['id']?>" style="height: 0;font-size: 0;"></div>
                                  <input type="hidden" size="2" value="1" id="prod_id[<?=$row['id']?>]" name="prod_id[<?=$row['id']?>]"/>
+                                 <input type="hidden" value="<?=$price?>" id="priceTmp<?=$row['id']?>" name="priceTmp<?=$row['id']?>" />
                                  <div class="tovarDetailBuyButton">
                                      <a href="#" id="rez<?=$row['id']?>" onclick="addToCart('<?=$row['id']?>');return false;" title="<?=$this->multi['TXT_BUY'];?>"><?=$this->multi['TXT_BUY']?></a>
                                  </div>
@@ -2407,14 +2416,24 @@ class CatalogLayout extends Catalog  {
             }
         }
         
-        function showColorId(id_prop,colorId){
-            $('#colorId'+id_prop).val(colorId);
-            $('#color_fon'+id_prop+' .colorId'+id_prop).removeClass('sel_div');
+        function showColorId(id_prop,colorId,id_param){
+            var priceTmp = parseInt($('#priceTmp'+id_prop).val());
+            //alert(priceTmp);
+            if(priceTmp!=0)$('#priceProp_'+id_prop).html(priceTmp);
+            
+            $('#parameters'+id_prop+'_'+id_param).val(colorId);
+            $('#color_fon'+id_prop+' .colorId'+id_prop+'_'+id_param).removeClass('sel_div');
             $('#color_fon'+id_prop+' #colorId'+colorId).addClass('sel_div');
             
             price = parseInt($('#priceFoIdProp_'+id_prop+'_'+colorId).val());
             //alert(price);
             if(price!=0)$('#priceProp_'+id_prop).html(price);
+        }
+        function pushHidden(id_prop,id_param){
+            html_tmp = $('#parametersBlockHidden'+id_prop).html();
+            //alert(html_tmp);
+            html_tmp = html_tmp + '<input type="hidden" value="0" id="parameters'+id_prop+'_'+id_param+'" name="parameters['+id_param+']" />';
+            $('#parametersBlockHidden'+id_prop).html(html_tmp);
         }
     </script><?
    }
@@ -2523,7 +2542,66 @@ class CatalogLayout extends Catalog  {
     //--------------------------------------------------------------------------------------------------
    } // end of function ShowParamsOfProp()
 
+   function ShowParamsOfPropFoOrder($id,$id_cat = NULL,$manufac = NULL)
+   {
+    //--------------------------------------------------------------------------------------------------
+    //------------------------------------ SHOW PARAMETERS ---------------------------------------------
+    //--------------------------------------------------------------------------------------------------
+    $this->id = $id;
 
+    $params = $this->IsParams( $id_cat );
+    if ( $params==0 ) return true;
+
+    $params_row = $this->GetParams($id_cat , 1 , 1);
+    $value=$this->GetParamsValuesOfProp( $this->id );
+    $cnt=0;
+    $tmp_row = array();
+    if($manufac){?><div class="tovarDetaiPropGray">Производитель: <?=$manufac?></div><?}
+    else{$style1 = 'tovarDetaiPropWhite';$style2 = 'tovarDetaiPropGray';}
+    for ($i=0;$i<count($params_row);$i++){
+      isset($value[$params_row[$i]['id']]) ? $val_from_table = $value[$params_row[$i]['id']] : $val_from_table = NULL;
+      if( $id!=NULL ) $this->Err!=NULL ? $val=$this->arr_params[$params_row[$i]['id']] : $val=$val_from_table;
+      else $val=$this->arr_params[$params_row[$i]['id']];
+      if ( count($val)==0 OR empty($val) ) continue;
+
+      if($params_row[$i]['type']!=6){
+          ?><div><?=stripslashes($params_row[$i]['name']);?>: <?
+      }
+      $tblname = TblModCatalogParamsVal;//$this->BuildNameOfValuesTable($params_row[$i]['id_categ'], $params_row[$i]['id']);
+      //echo '<br> $tblname='.$tblname;
+
+      switch ($params_row[$i]['type'] ) {
+        case '1':
+                echo stripslashes($params_row[$i]['prefix']).' '.$val.' '.stripslashes($params_row[$i]['sufix']);
+                break;
+        case '2':
+                echo stripslashes($params_row[$i]['prefix']).' ';
+                echo $this->Spr->GetNameByCod(TblSysLogic,$val, $this->lang_id, 1).' ';
+                echo stripslashes($params_row[$i]['sufix']);
+                break;
+        case '3':
+                echo stripslashes($params_row[$i]['prefix']).' ';
+                echo strip_tags($this->GetNameOfParamVal($params_row[$i]['id_categ'], $params_row[$i]['id'],$val, $this->lang_id, 1));
+                echo stripslashes($params_row[$i]['sufix']);
+                break;
+        case '4':
+                echo stripslashes($params_row[$i]['prefix']).' ';
+                echo $this->GetListNameOfParamValNew( $params_row[$i]['id_categ'], $params_row[$i]['id'], $this->lang_id ,$val); //$this->Spr->GetNamesInStr( $tblname, _LANG_ID, $val, ',' );// ShowInCheckBox( $tblname, 'arr_params['.$params_row[$i]['id'].']', 3, $val, 'right','disabled' );
+                echo stripslashes($params_row[$i]['sufix']);
+                break;
+        case '5':
+                echo stripslashes($params_row[$i]['prefix']);
+                echo $val;
+                echo stripslashes($params_row[$i]['sufix']);
+                break;
+         }
+         if($params_row[$i]['type']!=6){?></div><?}
+    }
+    //--------------------------------------------------------------------------------------------------
+    //---------------------------------- END SHOW PARAMETERS -------------------------------------------
+    //--------------------------------------------------------------------------------------------------
+   } // end of function ShowParamsOfProp()
+   
    // ================================================================================================
    // Function : GetParamsValuesOfPropInTable()
    // Version : 1.0.0
@@ -3387,7 +3465,12 @@ function ShowSearchResult($rows, $search_keywords=NULL)
                 // get translit name for current position
                 $translit_prop = $this->GetTranslitById($id_cat, $id_prop, $this->lang_id);
                 //echo '<br>$translit_prop='.$translit_prop.' $id_prop='.$id_prop;
-                $link = $link.$translit_prop.'.html';
+                if(CATALOG_TRASLIT){
+                    $link = $translit_prop.'.html';
+                }
+                else{
+                    $link = $link.$translit_prop.'.html';
+                }
             }
 
             if( !defined("_LINK")) {

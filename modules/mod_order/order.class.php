@@ -162,8 +162,24 @@ function add_to_cart()
         $q = "SELECT * FROM `".TblModTmpOrder."` 
             WHERE `prod_id`='".$key."'
             AND `sessid`='".$this->Logon->session_id."'";
+            $str_parameters = '';
+            //print_r($this->parameters);
+        if(!empty($this->parameters) && is_array($this->parameters)){
+            $keys = array_keys($this->parameters);
+            $size = sizeof($keys);
+            $cnt = 0;
+            for($i=0;$i<$size;$i++){
+                if($this->parameters[$keys[$i]]!=0){
+                    if($cnt>0) $str_parameters.=';';
+                    $str_parameters .= $this->parameters[$keys[$i]];
+                    $cnt++;
+                }
+            }
+            $q.=" AND `parameters`='".$str_parameters."'";
+        }
+        //echo '$str_parameters='.$str_parameters;
 //AND `parameters`='".$this->parameters."' AND `modif`='".$this->modif."'
-        if(isset($this->colorId)) $q.=" AND `colorId`='".$this->colorId."'";
+        //if(isset($this->colorId)) $q.=" AND `colorId`='".$this->colorId."'";
 	    $res = $db->db_Query($q);
 	    $check = $db->db_GetNumRows();
         //echo '<br>$q='.$q.' $res='.$res.' $check='.$check;
@@ -181,7 +197,11 @@ function add_to_cart()
          }
          $new_col = $row['quantity']+$quantity;
          $new_col = round($new_col,3);
-         $q = "update `".TblModTmpOrder."` set `quantity`='".$new_col."' where `prod_id`='".$key."' and `modif`='".$this->modif."' and `sessid`='".$this->Logon->session_id."'";
+         $q = "update `".TblModTmpOrder."` set `quantity`='".$new_col."' 
+             where `prod_id`='".$key."' 
+                 and `modif`='".$this->modif."' 
+                 and `sessid`='".$this->Logon->session_id."'
+                 and `parameters`='".$str_parameters."'";
          if(isset($this->colorId)) $q.=" AND `colorId`='".$this->colorId."'";
          $res1 = $this->db->db_Query($q);
         //  echo '<br>$q='.$q.' $res1='.$res1.' $this->db->result='.$this->db->result;
@@ -198,7 +218,7 @@ function add_to_cart()
           $quantity = str_replace(',', '.',$value);
          }
 
-        $q = "INSERT into `".TblModTmpOrder."` values(NULL, '".$date."', '".$quantity."', '".$this->Logon->user_id."', '".$key."', '".$this->modif."', '".$this->from."', '".$this->to."', '".$this->comment."', 1, '".$this->Logon->session_id."', '".$this->parameters."','".$this->colorId."' ,0)";
+        $q = "INSERT into `".TblModTmpOrder."` values(NULL, '".$date."', '".$quantity."', '".$this->Logon->user_id."', '".$key."', '".$this->modif."', '".$this->from."', '".$this->to."', '".$this->comment."', 1, '".$this->Logon->session_id."', '".$str_parameters."','".$this->colorId."' ,0)";
         $res = $db->db_Query( $q );
 	   // echo '<br>'.$q.' <br/>$res='.$res.' $db->result='.$db->result;
         if( !$res OR !$db->result ) {

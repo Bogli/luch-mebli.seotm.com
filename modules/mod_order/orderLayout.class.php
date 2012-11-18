@@ -298,7 +298,7 @@ include_once( $_SERVER['DOCUMENT_ROOT'].'/modules/mod_order/order.defines.php' )
          else $act = _LINK.'order/step2/';*/
          //$currentValuta = $this->Spr->GetNameByCod( TblSysCurrenciesSprShort, _CURR_ID, $this->lang_id, 1 );
          ?>
-         <form action="<?=$act;?>" method="post" name="shopping_cart_form">
+         <form action="<?=$act;?>" method="post" name="shopping_cart_form" id="shopping_cart_form">
                  <div id="OrederCart">
                  <table cellspacing="0" cellpadding="6" border="0" width="100%" class="tblOrder">
                  <tr align="center">
@@ -350,13 +350,11 @@ include_once( $_SERVER['DOCUMENT_ROOT'].'/modules/mod_order/order.defines.php' )
                   //====================== Get parameters and image by parameters START =======================
                    $this->arr_current_img_params_value = NULL;
                    $catalog->id = $row['prod_id'];
-                   /*if( !empty($row['parameters']) ){
-                       $this->arr_current_img_params_value = $this->GetParametersToArray( $row['parameters'] );
-                       $catalog->arr_current_img_params_value = $this->arr_current_img_params_value;
-                       $this->img = $catalog->GetImageToShowByParams();
+                   if( !empty($row['parameters']) ){
+                        $type6 = $catalog->GetParametrType6($row['parameters']);
                    }//end if
                    else
-                     $this->img = $catalog->GetFirstImgOfProp($row['prod_id']);*/
+                        $type6 = '';
 
                   // echo '<br> $this->img='.$this->img;
                    //====================== Get parameters and image by parameters END =======================
@@ -402,7 +400,10 @@ include_once( $_SERVER['DOCUMENT_ROOT'].'/modules/mod_order/order.defines.php' )
                       ?>
                     </td>
                     <td align="left"><a href="<?=$link?>" class="OrderPropName"><?=$name;?></a></td>
-                    <td></td>
+                    <td style="text-align: left;">
+                        <div><?=$type6?></div>
+                        <div><?$catalog->showOtherParamFoIdProp($row1['id'],$row1['id_cat']);?></div>
+                    </td>
                     <td><input type="text" value="<?=$row['quantity']?>" name="quantity[<?=$row['id']?>]" class="OrderPropQuantity" maxlength="2" size="2" onkeypress="return me()"></td>
                     <td><span class="price"><?=$this->currency->ShowPrice($price);?></span></td>
                     <td><span class="price"><?=$this->currency->ShowPrice($summa);?></span></td>
@@ -416,21 +417,9 @@ include_once( $_SERVER['DOCUMENT_ROOT'].'/modules/mod_order/order.defines.php' )
                      <td colspan="7" class="priceAll">Итоговая стоимость - <span class="price"><?=$this->suma( $mass, $quantity, $this->is_discount, false );?> грн.</span></td>
                  </tr>
                  </table>
-
-                <div class="clearing"></div><br/>
-
-                    <div class="orderBtn" align="right">
-                       <?/*<!--a href="#" onclick="ajaxUpdateCartDiscount(document.forms[\'shopping_cart_form\']); return false;" ><img src="/images/btn'._LANG_ID.'/btn_calc_discount.gif" name="save_btn" style="margin-right:5px;" alt="Перещитать со скидкой" title="Перещитать со скидкой"></a-->
-                       <!--a href="/">
-                        <img src="/images/design/nextByBtn<?=_LANG_ID;?>.gif" name="next_by" border="0" style="" alt="<?//=$this->multi['TXT_NEXT_STEP'];?>" title="<?//=$this->multi['TXT_NEXT_STEP'];?>">
-                       </a-->
-                       <input type="button" value="<?=$this->multi['BTN_CALCULATE'];?>" align="left" onclick="ajaxUpdateCart(document.forms['shopping_cart_form']); return false;" />
-                       <input  type="submit" value="<?=$btnSaveChanges;?>" align="right" />*/?>
-
-                       <a href="<?=_LINK?>" onclick="ajaxUpdateCart(document.forms['shopping_cart_form']); return false;" >
-                        <img src="/images/design/btnRecalculate.gif" name="reCalculateBtn" alt="<?=$this->multi['BTN_CALCULATE'];?>" title="<?=$this->multi['BTN_CALCULATE'];?>">
-                        </a>
-                        <input type="image" src="/images/design/btnOrder.gif" alt="<?=$btnSaveChanges;?>" title="<?=$btnSaveChanges;?>">
+                     <div class="orderbutton">
+                         <a href="javascript:$('#shopping_cart_form').submit();"
+                           title="<?=$this->multi['TXT_OFORMIT_TXT']?>" ><?=$this->multi['TXT_OFORMIT_TXT']?></a>
                     </div>
                  </div>
                  </form><?

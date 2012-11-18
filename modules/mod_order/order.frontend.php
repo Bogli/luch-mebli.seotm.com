@@ -110,6 +110,9 @@ else $pay_method = $_REQUEST['pay_method'];
 if( !isset( $_REQUEST['ajax_reload'] ) ) $ajax_reload = NULL;
 else $ajax_reload = $_REQUEST['ajax_reload'];
 
+if( !isset( $_REQUEST['parameters'] ) ) $parameters = NULL;
+else $parameters = $_REQUEST['parameters'];
+
 if(isset($_REQUEST['productId']) ) { $task = 'add_to_cart'; $prod_id = $_REQUEST['productId'];}
 
 if(isset($_REQUEST['productIdToRemove'])) { $task = 'del_pos'; $prod_id = $_REQUEST['productIdToRemove'];}
@@ -150,7 +153,7 @@ $my->comment = addslashes(strip_tags(trim($comment)));
 $my->modif = $modif;
 $my->img = $img;
 $my->arr_current_img_params_value = NULL;
-$my->parameters = NULL;
+$my->parameters = $parameters;
 $my->pay_method = $pay_method;
 $my->delivery_method = $delivery_method;
 

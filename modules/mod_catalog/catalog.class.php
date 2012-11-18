@@ -1678,7 +1678,7 @@ class Catalog {
                 }
                 ?><li style="background: <?=$background;?>;">
                     <input type="hidden" id="priceFoIdProp_<?=$id_prop?>_<?=$row['cod']?>" value="<?=$priceParam?>" name="priceFoIdProp_<?=$id_prop?>_<?=$row['cod']?>" />
-                    <div class="colorId<?=$id_prop?>" id="colorId<?=$row['cod']?>" onclick="showColorId(<?=$id_prop?>,<?=$row['cod']?>)"></div>
+                    <div class="colorId<?=$id_prop?>_<?=$id_param?>" id="colorId<?=$row['cod']?>" onclick="showColorId(<?=$id_prop?>,<?=$row['cod']?>,<?=$id_param?>)"></div>
                 </li><?
             }
             ?></ul>
@@ -1691,8 +1691,68 @@ class Catalog {
                 $(document).ready(function(){
                     addSize(<?=$rows?>,<?=$id?>);
                     chekStop(<?=$id?>,<?=$id_prop?>);
+                    pushHidden(<?=$id_prop?>,<?=$id_param?>);
                 });
             </script><?
+    }
+    
+    function GetParametrType6($tmp_arr){
+        $arr = explode(";", $tmp_arr);
+        $tmp_db = &DBs::getInstance();
+        /*$q = "SELECT * FROM `" . TblModCatalogParamsVal . "`
+             WHERE `lang_id`='" . $lang_id . "'
+             AND `id_cat`='" . $id_cat . "'
+             AND `id_param`='" . $id_param . "' ";*/
+        $q = "SELECT `" . TblModCatalogParamsVal . "`.img ,
+            `" . TblModCatalogParamsVal . "`.colorsBit ,
+            `" . TblModCatalogParamsSprName . "`.name
+            FROM `".TblModCatalogParamsVal."`, `".TblModCatalogParams."`,`".TblModCatalogParamsSprName."`
+            WHERE `" . TblModCatalogParamsVal . "`.`lang_id`='".$this->lang_id."'
+            AND `" . TblModCatalogParamsVal . "`.`id_cat`=`".TblModCatalogParams."`.`id_cat`
+            AND `" . TblModCatalogParamsVal . "`.`id_param`=`".TblModCatalogParams."`.`id`
+            AND `".TblModCatalogParams."`.`id` = `".TblModCatalogParamsSprName."`.cod
+            AND `".TblModCatalogParamsSprName."`.lang_id = '".$this->lang_id."'
+           ";
+        //$count = count($val);
+        //print_r($val);
+        if(is_array($arr) && !empty($arr)){
+            $q.=" AND `" . TblModCatalogParamsVal . "`.cod in(";
+            $keys = array_keys($arr);
+            $size = sizeof($keys);
+            for($i=0;$i<$size;$i++){
+                if($i>0)$q.=",";
+                $q.=$arr[$keys[$i]];
+            }
+            $q.=") ";
+        }
+        $q.="ORDER BY `".TblModCatalogParams."`.`move` ";
+
+        $res = $tmp_db->db_Query($q);
+        //echo '<br> $q='.$q.'  $tmp_db->result='.$tmp_db->result;
+        if (!$res OR !$tmp_db->result) return false;
+        $rows = $tmp_db->db_GetNumRows();
+        $return = '';
+        for($i=0;$i<$rows;$i++){
+            $return .='<div style="overflow: hidden;padding-bottom: 5px;">';
+            $row = $tmp_db->db_FetchAssoc();
+            $name = $row['name'];
+            $return .= '<div style="float: left;height: 15px;padding: 7px 3px 8px 0;">'.$name.':</div>';
+            if(empty($row['img'])){
+                $background = '#'.$row['colorsBit'];
+            }else{
+                $img = '/images/spr/mod_catalog_param_val/3/'.$row['img'];
+                $background = "url('".$this->ShowCurrentImageExSize($img,30,30, true, true, 85, NULL, false, NULL,true)."')";
+            }
+            $return .= '<div style="background: '.$background.';width: 30px;height: 30px;float: left;"></div>';
+            $return .= '</div>';
+        }
+        
+        return $return;
+    }
+    
+    function showOtherParamFoIdProp($id = NULL, $id_cat = NULL){
+        if(empty($id) || empty($id_cat)) return false;
+        $this->ShowParamsOfPropFoOrder($id,$id_cat);
     }
     
 // end of function GetListNameOfParamVal()
@@ -4344,7 +4404,7 @@ class Catalog {
                 if (!$res)
                     return false;
             }
-
+            //echo 'critic1';
             $path = SITE_PATH . $this->settings['img_path'] . '/' . $row['id_prop'];
             //echo '<br> $path='.$path;
             if (is_dir($path)) {
@@ -4359,6 +4419,7 @@ class Catalog {
                         $res = unlink($path . '/' . $file);
                         if (!$res)
                             return false;
+                        //echo 'critic2';
                     }
                     if ($file == "." || $file == "..") {
                         $cols_files++;
@@ -4373,7 +4434,7 @@ class Catalog {
                   FROM
                     `" . TblModCatalogPropImg . "`
                     LEFT JOIN `" . TblModCatalogPropImgTxt . "` ON (`" . TblModCatalogPropImg . "`.`id` = `" . TblModCatalogPropImgTxt . "`.`cod`)
-                  WHERE `id`='" . $u . "'
+                  WHERE `" . TblModCatalogPropImg . "`.`id`='" . $u . "'
                  ";
             $res = $tmp_db->Query($q);
             //echo '<br>2q='.$q.' res='.$res.' $tmp_db->result='.$tmp_db->result;
