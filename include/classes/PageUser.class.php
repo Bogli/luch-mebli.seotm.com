@@ -408,11 +408,16 @@ class PageUser extends Page {
                                 <div class="NameLeftMenu">Каталог</div>
                                 <div class="CatalogMenuLeftFon"><?$this->Catalog->ShowCatalogTree(false);?></div>
                             </div>
-                            <div><?
-                                echo $this->Catalog->ShowSelectedFilters();
-                                $this->Catalog->ParamShowPricePanel();
+                            <div class="CatalogShowFilter">
+                                <?$action = $this->Catalog->Link($this->Catalog->id_cat); ?>
+                                <form name="filter" id="filter" action="<?=$action?>">
+                                <div class="CatalogShowFilterName">Подобрать товар</div><?
+                                //echo $this->Catalog->ShowSelectedFilters();
+                                $this->Catalog->ShowFilterManufac($action);
                                 echo $this->Catalog->ShowAllFilters();
-                            ?></div>
+                                $this->Catalog->ParamShowPricePanel();
+                            ?></form>
+                            </div>
                         </div><?
                         break;
                     default:

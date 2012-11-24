@@ -242,7 +242,10 @@ RewriteRule ^order/step4/$                                      /order.php?task=
 RewriteRule ^order/history/$                                    /order.php?task=history                    [QSA,L]
 RewriteRule ^order/result/$                                     /order.php?task=make_order_finish          [QSA,L]
 RewriteRule ^order/checkout_discount/$                          /order.php?task=order_discount             [QSA,L]
-RewriteRule ^addToCart/$                        /order.php?task=add_to_cart             [QSA,L]
+RewriteRule ^addToCart/$                                        /order.php?task=add_to_cart                [QSA,L]
+RewriteRule ^del_pos/$                                          /order.php?task=del_pos                    [QSA,L]
+RewriteRule ^showCart/$                                         /order.php?task=cart                       [QSA,L]
+RewriteRule ^updateCart/$                                       /order.php?task=update_pos                 [QSA,L]
 #======================================== ORDER END ==============================================================
 
 
@@ -273,6 +276,6 @@ RewriteRule ^(en|ru|ua)/(.*|.*/)$  /index.php?lang_st=$1&q=$2 [QSA,L]
 RewriteCond %{REQUEST_URI} !(\.(js|ico|jpg|png|gif|css)) [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /index.php?q=$1 [NC,L]
+RewriteRule ^(.*)$ /index.php?q=$1 [QSA,L]
 #===================================== Dynamic Pages END ======================================================================
 </IfModule>

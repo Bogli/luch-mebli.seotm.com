@@ -36,6 +36,7 @@ if (!defined("PAGE_CATALOG"))       define( "PAGE_CATALOG", "2" );
 if (!defined("PAGE_COMMENT"))       define( "PAGE_COMMENT", "80" );
 if (!defined("PAGE_FEEDBACK"))      define( "PAGE_FEEDBACK", "74" );
 if (!defined("PAGE_NEWS"))          define( "PAGE_NEWS", "6" );
+if (!defined("CATEGORY_ACTION"))    define( "CATEGORY_ACTION", "35" );
 
 include_once( SITE_PATH.'/admin/include/defines.inc.php' );
 

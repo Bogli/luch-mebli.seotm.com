@@ -719,9 +719,6 @@
     function WriteContentHeader( $h1 = null, $title = null, $path=null)
     {
         ?><div id="content2Box"><?
-        if($h1) {
-            ?><h1><?=$h1;?></h1><?
-        }
         if($title) {
             ?><div class="title"><?=$title;?></div><?
         }
@@ -729,6 +726,9 @@
             ?><div class="path"><?=$path;?></div><?
         }
         ?><div class="content2BoxContent"><?
+        if($h1) {
+            ?><h1 class="NameLeftMenu"><?=$h1;?></h1><?
+        }
         
     } //--- end of WriteContentHeader()   
 
